@@ -1,20 +1,6 @@
-const ARROW_WIDTH = 40;
-const ARROW_HEIGHT = 80;
-const GAP = 10;
+import {ARROW_WIDTH, ARROW_HEIGHT, GAP, COLORS, IMAGE_SRC} from "./constants";
 
-const COLORS = {
-    "l": "#BF95FF", 
-    "d": "#FF899E",
-    "u": "#C5C5FF",
-    "r": "#A3E9A3"
-}
 
-const IMAGE_SRC = { 
-    "l": "../images/left-arrow.png",
-    "d": "../images/down-arrow.png",
-    "u": "../images/up-arrow.png",
-    "r": "../images/right-arrow.png"
-}
 
 class Arrow {
     constructor(ctx, dir, coords) {
