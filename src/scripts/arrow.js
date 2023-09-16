@@ -43,14 +43,16 @@ class Arrow {
             centerX = this.coords[0] + ARROW_WIDTH/2;
             centerY = this.coords[1] + ARROW_HEIGHT/2;
         }
-        this.ctx.restore();
+        // this.ctx.restore();
         this.ctx.beginPath();
         this.ctx.arc(centerX, centerY, radius, 0, 2*Math.PI, false);
         this.ctx.lineWidth = 3;
+
+
         
         this.ctx.strokeStyle = COLORS[this.dir];
         this.ctx.stroke();
-        this.ctx.save();
+        // this.ctx.save();
     }
 }
 export default Arrow;
