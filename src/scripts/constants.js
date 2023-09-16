@@ -1,3 +1,6 @@
+export const DIM_X = 1000;  
+export const DIM_Y = 600; 
+
 export const ARROW_WIDTH = 40;
 export const ARROW_HEIGHT = 80;
 export const GAP = 10;

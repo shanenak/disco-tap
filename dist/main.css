@@ -1,8 +1,19 @@
 /*!*********************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/home-page.scss ***!
   \*********************************************************************************************************/
-body {
+.nav {
     background-color: black;
+    height: 50px;
+    width: 500px;
+    color: white;
+    font-family:Arial, Helvetica, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+body {
+    background-image: url("../images/dance.jpg");
+    background-size: cover;
 }
 /*!*************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!

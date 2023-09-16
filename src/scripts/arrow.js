@@ -1,35 +1,34 @@
 import {ARROW_WIDTH, ARROW_HEIGHT, GAP, COLORS, IMAGE_SRC} from "./constants";
 
-
-
 class Arrow {
     constructor(ctx, dir, coords) {
         this.ctx = ctx;
         this.dir = dir;
         this.coords = coords;
+        this.newImage = this.getImage();
     }
     
     getImage() {
-        let newImage = new Image()
-    
+        let imageObject;
         if (this.dir === 'l' || this.dir === 'r') {
             // if arrow is horizontal
-            newImage = new Image(ARROW_HEIGHT, ARROW_WIDTH)
+            imageObject = new Image(ARROW_HEIGHT, ARROW_WIDTH)
         } else {
             // else if arrow is vertical
-            newImage = new Image(ARROW_WIDTH, ARROW_HEIGHT)
+            imageObject = new Image(ARROW_WIDTH, ARROW_HEIGHT)
         }
-        newImage.src = IMAGE_SRC[this.dir]
-    
-        return newImage
+        imageObject.src = IMAGE_SRC[this.dir]
+        return imageObject
+        }
+
+    draw() {
+        let imageObject = this.newImage;
+        this.ctx.drawImage(imageObject, ...this.coords, imageObject.width, imageObject.height)
     }
 
-    drawImage() {
-        let imageObject = this.getImage()
-        let draw = ()=> {
-            this.ctx.drawImage(imageObject, ...this.coords, imageObject.width, imageObject.height)
-        }
-        imageObject.onload = draw;
+    createImage() {
+        let imageObject = this.newImage;
+        imageObject.onload = this.draw.bind(this);
     }
 
     drawCircle() {
@@ -44,12 +43,14 @@ class Arrow {
             centerX = this.coords[0] + ARROW_WIDTH/2;
             centerY = this.coords[1] + ARROW_HEIGHT/2;
         }
+        this.ctx.restore();
         this.ctx.beginPath();
         this.ctx.arc(centerX, centerY, radius, 0, 2*Math.PI, false);
         this.ctx.lineWidth = 3;
         
         this.ctx.strokeStyle = COLORS[this.dir];
         this.ctx.stroke();
+        this.ctx.save();
     }
 }
 export default Arrow;
