@@ -26,6 +26,7 @@ class Animate {
             let dir = ARROW_KEYS[event.key];
             let targetArrow = this.targets[dir];
             targetArrow.pressed = Animate.PRESSED_FRAMES;
+            // todo: add feedback on moving arrows if pressed key
         }
     };
 
@@ -40,7 +41,7 @@ class Animate {
 
     addTargets() {
         Object.values(this.targets).forEach((arrow)=> {
-            arrow.drawCircle();
+            arrow.targetCircle();
             arrow.draw();
         })
     };
@@ -58,6 +59,7 @@ class Animate {
     draw() {
         this.addTargets(this.ctx);
         this.arrows.forEach((arrow)=> {
+            arrow.pressedCircle();
             arrow.draw();
         })
     }

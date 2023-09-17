@@ -33,35 +33,38 @@ class Arrow {
     }
 
     getCenter() {
-        let centerX, centerY;
-        if (this.dir === 'l' || this.dir === 'r') {
-            // if arrow is horizontal
-            centerX = this.coords[0] + ARROW_HEIGHT/2;
-            centerY = this.coords[1] + ARROW_WIDTH/2;
-        } else {
-            // if arrow is vertical
-            centerX = this.coords[0] + ARROW_WIDTH/2;
-            centerY = this.coords[1] + ARROW_HEIGHT/2;
-        }
-        return [centerX, centerY]
+        const radius = ARROW_HEIGHT/2 + GAP/15;
+
+        let [x, y] = this.coords
+        const horizArrows = ['l', 'r'];
+        const centerX = horizArrows.includes(this.dir) ? x+ARROW_HEIGHT/2 : x+ARROW_WIDTH/2;
+        const centerY = horizArrows.includes(this.dir) ? y+ARROW_WIDTH/2 : y+ARROW_HEIGHT/2;
+
+        return [radius, centerX, centerY]
     }
 
-    drawCircle() {
-        const radius = ARROW_HEIGHT/2 + GAP/15;
-        let [centerX, centerY] = this.getCenter()
+    pressedCircle() {
+        const [radius, centerX, centerY] = this.getCenter()
         if (this.pressed) {
-            this.fillCircle();
+            this.outlineCircle(radius, centerX, centerY)
+            // this.pressedCircle(radius, centerX, centerY);
+            this.pressed -=1;
+        }
+    }
+
+    targetCircle() {
+        const [radius, centerX, centerY] = this.getCenter()
+
+        if (this.pressed) {
+            this.pressedCircle(radius, centerX, centerY);
             this.pressed -=1;
         } else {
-        // fill target circle black
-        this.ctx.beginPath();
-        this.ctx.arc(centerX, centerY, radius+4, 0, 2*Math.PI, false);
-        this.ctx.fillStyle = "#000000";
-        this.ctx.fill();
-        this.ctx.strokeStyle = "#000000";
-        this.ctx.stroke();
+            this.emptyCircle(radius, centerX, centerY);
         }
-        
+        this.outlineCircle(radius, centerX, centerY)
+    }
+
+    outlineCircle(radius, centerX, centerY) {
         // outline target circle with color
         this.ctx.beginPath();
         this.ctx.arc(centerX, centerY, radius, 0, 2*Math.PI, false);
@@ -74,10 +77,17 @@ class Arrow {
         this.ctx.shadowColor = "black";
     }
 
-    fillCircle() {
-        const radius = ARROW_HEIGHT/2 + GAP/15;
-        let [centerX, centerY] = this.getCenter()
+    emptyCircle(radius, centerX, centerY) {
+         // fill target circle black
+        this.ctx.beginPath();
+        this.ctx.arc(centerX, centerY, radius+4, 0, 2*Math.PI, false);
+        this.ctx.fillStyle = "#000000";
+        this.ctx.fill();
+        this.ctx.strokeStyle = "#000000";
+        this.ctx.stroke();
+    }
 
+    pressedCircle(radius, centerX, centerY) {
         // fill target circle when clicked
         this.ctx.beginPath();
         this.ctx.arc(centerX, centerY, radius+4, 0, 2*Math.PI, false);
