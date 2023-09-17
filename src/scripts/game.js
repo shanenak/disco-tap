@@ -1,4 +1,3 @@
-import {addTargets, createArrow} from "./target";
 import { DIM_X, DIM_Y } from "./constants";
 import Animate from "./animate";
 
