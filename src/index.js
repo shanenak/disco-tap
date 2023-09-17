@@ -7,4 +7,3 @@ canvasEl.height = window.innerHeight //DIM_Y ;
 
 const ctx = canvasEl.getContext("2d");
 const game = new Game(ctx);
-// new GameView(game,ctx).start();

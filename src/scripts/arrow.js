@@ -5,6 +5,7 @@ class Arrow {
         this.ctx = ctx;
         this.dir = dir;
         this.coords = coords;
+        this.pressed = 0;
         this.newImage = this.getImage();
     }
     
@@ -31,8 +32,7 @@ class Arrow {
         imageObject.onload = this.draw.bind(this);
     }
 
-    drawCircle() {
-        const radius = ARROW_HEIGHT/2 + GAP/15;
+    getCenter() {
         let centerX, centerY;
         if (this.dir === 'l' || this.dir === 'r') {
             // if arrow is horizontal
@@ -43,7 +43,16 @@ class Arrow {
             centerX = this.coords[0] + ARROW_WIDTH/2;
             centerY = this.coords[1] + ARROW_HEIGHT/2;
         }
+        return [centerX, centerY]
+    }
 
+    drawCircle() {
+        const radius = ARROW_HEIGHT/2 + GAP/15;
+        let [centerX, centerY] = this.getCenter()
+        if (this.pressed) {
+            this.fillCircle();
+            this.pressed -=1;
+        } else {
         // fill target circle black
         this.ctx.beginPath();
         this.ctx.arc(centerX, centerY, radius+4, 0, 2*Math.PI, false);
@@ -51,6 +60,7 @@ class Arrow {
         this.ctx.fill();
         this.ctx.strokeStyle = "#000000";
         this.ctx.stroke();
+        }
         
         // outline target circle with color
         this.ctx.beginPath();
@@ -65,12 +75,15 @@ class Arrow {
     }
 
     fillCircle() {
+        const radius = ARROW_HEIGHT/2 + GAP/15;
+        let [centerX, centerY] = this.getCenter()
+
         // fill target circle when clicked
         this.ctx.beginPath();
         this.ctx.arc(centerX, centerY, radius+4, 0, 2*Math.PI, false);
         this.ctx.fillStyle = COLORS[this.dir];
         this.ctx.fill();
-        this.ctx.strokeStyle = "#FFFFFF";
+        this.ctx.strokeStyle = "#000000";
         this.ctx.stroke();
     }
 }

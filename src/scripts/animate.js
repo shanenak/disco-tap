@@ -1,5 +1,5 @@
 import Arrow from "./arrow";
-import {ARROW_HEIGHT, DIM_X, DIM_Y, ALL_DIRS, COORDS } from "./constants";
+import {ARROW_HEIGHT, ARROW_KEYS, DIM_X, DIM_Y, ALL_DIRS, COORDS } from "./constants";
 
 class Animate {
     constructor(ctx) {
@@ -7,27 +7,39 @@ class Animate {
         this.arrows = [];
         this.targets = this.createTargets();
     }
+
+    static PRESSED_FRAMES = 25;
     
     startGame() {
         this.addTargets();
         for (let i = 0; i < 4; i++) {
             let newArrow = this.createArrow();
             this.arrows.push(newArrow); 
-        }
-        console.log(this.arrows)           
+        }         
         window.requestAnimationFrame(this.step.bind(this));
+        document.addEventListener("keydown", this.keyTap.bind(this));
+    };
+
+    keyTap(event) {
+        event.preventDefault()
+        if (ALL_DIRS.includes(ARROW_KEYS[event.key])) {
+            let dir = ARROW_KEYS[event.key];
+            let targetArrow = this.targets[dir];
+            targetArrow.pressed = Animate.PRESSED_FRAMES;
+        }
     };
 
     createTargets() {
-        return ALL_DIRS.map((dir)=> {
+        const allTargets = {};
+        ALL_DIRS.forEach((dir)=> {
             let arrow = new Arrow(this.ctx, dir, COORDS[dir]);
-            return arrow
+            allTargets[dir] = arrow;
         })
+        return allTargets
     }
 
     addTargets() {
-        console.log(this.targets)
-        this.targets.forEach((arrow)=> {
+        Object.values(this.targets).forEach((arrow)=> {
             arrow.drawCircle();
             arrow.draw();
         })

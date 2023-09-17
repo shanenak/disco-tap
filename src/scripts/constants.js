@@ -1,7 +1,7 @@
 export const ALL_DIRS = ['l', 'd', 'u', 'r'];
 
-export const DIM_X = 1000;  
-export const DIM_Y = 600; 
+export const DIM_X = window.innerWidth;  
+export const DIM_Y = window.innerHeight; 
 
 export const ARROW_WIDTH = 40;
 export const ARROW_HEIGHT = 80;
@@ -18,6 +18,13 @@ export const COORDS = {
     "u": [TAB_X + ARROW_HEIGHT + ARROW_WIDTH + 16*GAP, VERT_Y],
     "r": [TAB_X + ARROW_HEIGHT + 2*ARROW_WIDTH + 23*GAP, HORIZ_Y]
 };
+
+export const ARROW_KEYS = {
+    "ArrowLeft": "l",
+    "ArrowDown": "d",
+    "ArrowUp": "u",
+    "ArrowRight": "r"
+}
 
 export const COLORS = {
     "l": "#BF95FF", 
