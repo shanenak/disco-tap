@@ -43,7 +43,7 @@ class Arrow {
         return [radius, centerX, centerY]
     }
 
-    pressedCircle() {
+    pressedAttempt() {
         const [radius, centerX, centerY] = this.getCenter()
         if (this.pressed) {
             this.outlineCircle(radius, centerX, centerY)

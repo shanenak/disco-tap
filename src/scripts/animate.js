@@ -5,10 +5,12 @@ class Animate {
     constructor(ctx) {
         this.ctx = ctx;
         this.arrows = [];
+        this.score = 0;
         this.targets = this.createTargets();
     }
 
     static PRESSED_FRAMES = 25;
+    static DIST_THRESHOLD = 25;
     
     startGame() {
         this.addTargets();
@@ -26,6 +28,14 @@ class Animate {
             let dir = ARROW_KEYS[event.key];
             let targetArrow = this.targets[dir];
             targetArrow.pressed = Animate.PRESSED_FRAMES;
+            
+            let possibleArrows = this.arrows.filter((arrow)=>(
+                arrow.dir === targetArrow.dir) && (Math.abs(arrow.coords[1] - targetArrow.coords[1]) < Animate.DIST_THRESHOLD));
+            
+            if (possibleArrows.length) {
+                possibleArrows[0].pressed = Animate.PRESSED_FRAMES;
+                this.score += 5
+            } else this.score -= 1;
             // todo: add feedback on moving arrows if pressed key
         }
     };
@@ -59,7 +69,7 @@ class Animate {
     draw() {
         this.addTargets(this.ctx);
         this.arrows.forEach((arrow)=> {
-            arrow.pressedCircle();
+            arrow.pressedAttempt();
             arrow.draw();
         })
     }
