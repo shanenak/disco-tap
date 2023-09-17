@@ -36,7 +36,9 @@ class Animate {
                 possibleArrows[0].pressed = Animate.PRESSED_FRAMES;
                 this.score += 5
             } else this.score -= 1;
-            // todo: add feedback on moving arrows if pressed key
+
+            const scoreText = document.querySelector("#score");
+            scoreText.innerText = 'Score: '+this.score;
         }
     };
 
