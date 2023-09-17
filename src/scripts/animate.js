@@ -28,8 +28,8 @@ class Animate {
     addTargets() {
         console.log(this.targets)
         this.targets.forEach((arrow)=> {
-            arrow.draw();
             arrow.drawCircle();
+            arrow.draw();
         })
     };
 

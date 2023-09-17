@@ -43,16 +43,35 @@ class Arrow {
             centerX = this.coords[0] + ARROW_WIDTH/2;
             centerY = this.coords[1] + ARROW_HEIGHT/2;
         }
-        // this.ctx.restore();
+
+        // fill target circle black
+        this.ctx.beginPath();
+        this.ctx.arc(centerX, centerY, radius+4, 0, 2*Math.PI, false);
+        this.ctx.fillStyle = "#000000";
+        this.ctx.fill();
+        this.ctx.strokeStyle = "#000000";
+        this.ctx.stroke();
+        
+        // outline target circle with color
         this.ctx.beginPath();
         this.ctx.arc(centerX, centerY, radius, 0, 2*Math.PI, false);
         this.ctx.lineWidth = 3;
-
-
-        
         this.ctx.strokeStyle = COLORS[this.dir];
         this.ctx.stroke();
-        // this.ctx.save();
+
+        // blur target circle
+        this.ctx.shadowBlur = 20;
+        this.ctx.shadowColor = "black";
+    }
+
+    fillCircle() {
+        // fill target circle when clicked
+        this.ctx.beginPath();
+        this.ctx.arc(centerX, centerY, radius+4, 0, 2*Math.PI, false);
+        this.ctx.fillStyle = COLORS[this.dir];
+        this.ctx.fill();
+        this.ctx.strokeStyle = "#FFFFFF";
+        this.ctx.stroke();
     }
 }
 export default Arrow;
