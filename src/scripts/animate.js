@@ -1,4 +1,5 @@
 import Arrow from "./arrow";
+import Music from "./music";
 import {ARROW_HEIGHT, ARROW_KEYS, DIM_X, DIM_Y, ALL_DIRS, COORDS } from "./constants";
 
 class Animate {
@@ -20,11 +21,19 @@ class Animate {
         }         
         window.requestAnimationFrame(this.step.bind(this));
         document.addEventListener("keydown", this.keyTap.bind(this));
+
+        this.startMusic()
     };
 
+    startMusic() {
+        let newMusic = new Music()
+        console.log('new music')
+        newMusic.getSong()
+    }
+
     keyTap(event) {
-        event.preventDefault()
         if (ALL_DIRS.includes(ARROW_KEYS[event.key])) {
+            event.preventDefault()
             let dir = ARROW_KEYS[event.key];
             let targetArrow = this.targets[dir];
             targetArrow.pressed = Animate.PRESSED_FRAMES;
