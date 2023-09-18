@@ -1,7 +1,7 @@
 export const ALL_DIRS = ['l', 'd', 'u', 'r'];
 
-export const DIM_X = window.innerWidth;  
-export const DIM_Y = window.innerHeight; 
+export const DIM_X = 1000;  
+export const DIM_Y = 600; 
 
 export const ARROW_WIDTH = 40;
 export const ARROW_HEIGHT = 80;

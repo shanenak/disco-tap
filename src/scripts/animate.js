@@ -7,29 +7,25 @@ class Animate {
         this.ctx = ctx;
         this.arrows = [];
         this.score = 0;
+
+        this.done = false;
         this.targets = this.createTargets();
     }
 
     static PRESSED_FRAMES = 25;
     static DIST_THRESHOLD = 25;
+    static BPM = 110;
+    static SEC_PER_MIN = 60;
+    static BEATS_PER_SEC = Animate.BPM / Animate.SEC_PER_MIN;
+
+    static FRAMES_PER_BEAT = 20;
+    static BEATS_PER_FRAME = 1/Animate.FRAMES_PER_BEAT;
     
     startGame() {
-        this.addTargets();
-        for (let i = 0; i < 4; i++) {
-            let newArrow = this.createArrow();
-            this.arrows.push(newArrow); 
-        }         
-        window.requestAnimationFrame(this.step.bind(this));
+        this.addTargets();   
+        this.startAnimating(3 * (Animate.BEATS_PER_SEC/Animate.BEATS_PER_FRAME));
         document.addEventListener("keydown", this.keyTap.bind(this));
-
-        // this.startMusic()
     };
-
-    // startMusic() {
-    //     let newMusic = new Music()
-    //     console.log('new music')
-    //     newMusic.getSong()
-    // }
 
     keyTap(event) {
         if (ALL_DIRS.includes(ARROW_KEYS[event.key])) {
@@ -64,6 +60,7 @@ class Animate {
         Object.values(this.targets).forEach((arrow)=> {
             arrow.targetCircle();
             arrow.draw();
+            console.log('added target')
         })
     };
 
@@ -71,10 +68,9 @@ class Animate {
         let randDir = ALL_DIRS[Math.floor(Math.random()*4)];
         let startCoords = COORDS[randDir].slice();
         startCoords[1] = DIM_Y-ARROW_HEIGHT;
-
         let randArrow = new Arrow(this.ctx, randDir, startCoords);
         randArrow.createImage();
-        return randArrow
+        this.arrows.push(randArrow); 
     };
 
     draw() {
@@ -91,12 +87,37 @@ class Animate {
             arrow.coords[1] -= 1
         })
     }
-    
-    step() {
-        this.ctx.clearRect(0,0,DIM_X, DIM_Y)
-        this.draw();
-        this.update();
-        if (this.arrows.length) window.requestAnimationFrame(this.step.bind(this));
+
+    startAnimating(fps) {
+        this.frameCount = 0;
+
+        console.log(this.fps)
+        this.fpsInterval = 1000 / fps;
+        this.then = window.performance.now();
+        this.startTime = this.then;
+        this.animate();
+    }
+
+    animate() {
+        // if (this.arrows.length < 50) window.requestAnimationFrame(this.animate.bind(this));
+
+        let now = Date.now();
+        let elapsed = now - this.then;
+        if (elapsed > this.fpsInterval) {
+            this.then = now - (elapsed % this.fpsInterval);
+
+            this.ctx.clearRect(0,0,DIM_X, DIM_Y)
+            if (this.frameCount === 0 || this.frameCount % 20 === 0) {
+            this.createArrow();
+        }
+            this.draw();
+            this.update();
+
+            var sinceStart = now - this.startTime;
+            var currentFps = Math.round(1000 / (sinceStart / ++this.frameCount) * 100) / 100;
+            const fps = document.querySelector("#FPS")
+            fps.innerText = "Elapsed time= " + Math.round(sinceStart / 1000 * 100) / 100 + " secs @ " + currentFps + " fps.";
+        }
     }
 }
 
