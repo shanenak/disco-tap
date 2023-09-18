@@ -22,14 +22,14 @@ class Animate {
         window.requestAnimationFrame(this.step.bind(this));
         document.addEventListener("keydown", this.keyTap.bind(this));
 
-        this.startMusic()
+        // this.startMusic()
     };
 
-    startMusic() {
-        let newMusic = new Music()
-        console.log('new music')
-        newMusic.getSong()
-    }
+    // startMusic() {
+    //     let newMusic = new Music()
+    //     console.log('new music')
+    //     newMusic.getSong()
+    // }
 
     keyTap(event) {
         if (ALL_DIRS.includes(ARROW_KEYS[event.key])) {
