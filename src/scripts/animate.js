@@ -16,15 +16,17 @@ class Animate {
     
 
     static BPM = 110;
-    static SEC_PER_MIN = 60;
-    static FPS = 24;
     static FRAMES_PER_BEAT = 13;
+    static FRAMES_PER_MIN = Animate.BPM * Animate.FRAMES_PER_BEAT;
+    static SEC_PER_MIN = 60;
+    static FRAMES_PER_SEC = Animate.FRAMES_PER_MIN / Animate.SEC_PER_MIN;
+    static LENGTH_FRAME = 1000/Animate.FRAMES_PER_SEC;
 
     
     startGame() {
         this.canvas.addTargets();   
         console.log(this.choreo[1])
-        this.startAnimating(1000 / Animate.FPS);
+        this.startAnimating(Animate.LENGTH_FRAME);
     };
 
     startAnimating(fps) {
@@ -55,7 +57,7 @@ class Animate {
         this.canvas.draw();
         this.canvas.update();
         this.frameCount+=1;
-        if (this.frameCount > 24*17) {
+        if (this.frameCount > 24*18) {
             clearInterval(this.interval);
             console.log('interval cleared!');
         }
