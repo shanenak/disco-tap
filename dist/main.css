@@ -14,38 +14,103 @@
     justify-content: space-between;
     padding-left: 40px;
     padding-right: 20px;
+    padding-bottom: 10px;
+    overflow: visible;
 }
 .neonText {
     color: #fff;
     font-family: 'Tilt Neon', cursive;
-    /* Neon effect from https: //css-tricks.com/how-to-create-neon-text-with-css/ */
-    text-shadow: 
-        0 0 7px #fff,
-        0 0 10px #fff,
-        0 0 21px #fff,
-        0 0 42px #5271ff,
-        0 0 82px #5271ff,
-        0 0 92px #5271ff,
-        0 0 102px #5271ff;
+    /* Neon and flicker effect from https: //css-tricks.com/how-to-create-neon-text-with-css/ */
+    text-shadow:
+            0 0 7px #fff,
+            0 0 10px #fff,
+            0 0 21px #fff,
+            0 0 42px #5271ff,
+            0 0 82px #5271ff,
+            0 0 92px #5271ff,
+            0 0 102px #5271ff;
+}
+
+.flicker {
+    animation: flicker 1.5s infinite alternate;
+    color: #fff;
+    transition: all 0.5s ease-in-out;
+}
+@keyframes flicker {
+    0%,
+    18%,
+    22%,
+    25%,
+    53%,
+    57%,
+    100% {
+        text-shadow:
+            0 0 4px #fff,
+            0 0 11px #fff,
+            0 0 19px #fff,
+            0 0 40px #5271ff,
+            0 0 80px #5271ff,
+            0 0 90px #5271ff,
+            0 0 100px #5271ff;
+    }
+    20%,
+    24%,
+    55% {
+        text-shadow: none;
+    }
+}
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 9999;
+}
+
+/* https: //codepen.io/silvia-odwyer/pen/RwKMOpb */
+.popup-content {
+    background-color: black;
+    background-image: url("../images/lights.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 20% auto;
+    padding: 20px;
+    width: 80%;
+    border: 0.2rem solid #fff;
+    border-radius: 2rem;
+    padding: 0.4em;
+    box-shadow: 0 0 .2rem #fff,
+        0 0 .2rem #fff,
+        0 0 2rem #5271ff,
+        0 0 0.8rem #5271ff,
+        0 0 2.8rem #5271ff,
+        inset 0 0 1.3rem #5271ff;
+}
+
+.close {
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: red;
 }
 
 .container {
     position: relative;
 }
 
-.fullscreen-image-container {
-    position: absolute;
-    top: 0;
-    left: 0;
+#dance {
     width: 100%;
-    height: 100%;
-    background-image: url('your-image.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
+    height: auto;
 }
 
-.img {
-    width: 100%;
+#game-on {
+    width: 20%;
     height: auto;
 }
 
@@ -64,7 +129,33 @@
     text-align: center;
 }
 
+#animate-score {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
 
+.plus-one {
+    position: absolute;
+    left: 75%;
+    bottom: -20px;
+    animation-name: fade-in-up;
+    animation-duration: 3s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease;
+}
+
+@keyframes fade-in-up {
+    0%,
+    10% {
+        top: 50%;
+        opacity: 1;
+    }
+    100% {
+        top: -100%;
+        opacity: 0;
+    }
+}
 /*!*************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
   \*************************************************************************************************************************************/

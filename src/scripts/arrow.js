@@ -27,6 +27,47 @@ class Arrow {
         this.ctx.drawImage(imageObject, ...this.coords, imageObject.width, imageObject.height)
     }
 
+    
+    addMessage() {
+        const dist = this.attempt;
+        const message = document.querySelector("#message");
+        switch (Math.abs(Math.floor(dist/80))) {
+            case 0:
+                message.innerText = "PERFECT!";
+                break;
+            case 1:
+                message.innerText = "GREAT!";
+                break;
+            case 2:
+                message.innerText = "GOOD"
+                break;
+            case 3:
+                message.innerText = "BOO"
+            default:
+                message.innerText = "MISS"
+                break;
+        }
+        setTimeout(()=> {
+                message.innerText = ""
+            }, 500);
+    }
+
+    getScore() {
+        const dist = this.attempt;
+        switch (Math.abs(Math.floor(dist/80))) {
+            case 0:
+                return 5;
+            case 1:
+                return 3;
+            case 2:
+                return 1;
+            case 3:
+                return 0;
+            default:
+                return -1;
+        }
+    }
+
     createImage() {
         let imageObject = this.newImage;
         imageObject.onload = this.draw.bind(this);
@@ -43,24 +84,15 @@ class Arrow {
         return [radius, centerX, centerY]
     }
 
-    pressedAttempt() {
-        const [radius, centerX, centerY] = this.getCenter()
-        if (this.pressed) {
-            this.outlineCircle(radius, centerX, centerY)
-            // this.pressedCircle(radius, centerX, centerY);
-            this.pressed -=1;
-        }
-    }
-
     targetCircle() {
         const [radius, centerX, centerY] = this.getCenter()
 
-        // if (this.pressed) {
-        //     this.pressedCircle(radius, centerX, centerY);
-        //     this.pressed -=1;
-        // } else {
-        //     this.emptyCircle(radius, centerX, centerY);
-        // }
+        if (this.pressed) {
+            this.pressedCircle(radius, centerX, centerY);
+            this.pressed -=1;
+        } else {
+            this.emptyCircle(radius, centerX, centerY);
+        }
         this.outlineCircle(radius, centerX, centerY)
     }
 

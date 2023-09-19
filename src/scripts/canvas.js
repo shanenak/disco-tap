@@ -12,7 +12,7 @@ class Canvas {
     }  
 
     static SPEED = 5;
-    static PRESSED_FRAMES = 10;
+    static PRESSED_FRAMES = 5;
     static DIST_THRESHOLD = 25;
 
     keyTap(event) {
@@ -23,39 +23,45 @@ class Canvas {
             targetArrow.pressed = Canvas.PRESSED_FRAMES;
             
             let dirArrows = this.arrows.filter((arrow)=> arrow.dir === targetArrow.dir);
-            console.log(targetArrow)
             const closestArrow = dirArrows.sort((arrow)=> Math.abs(arrow.coords[1] - targetArrow.coords[1]))[0];
             if (closestArrow) {
-                closestArrow.pressed = Canvas.PRESSED_FRAMES;
                 closestArrow.attempt = closestArrow.coords[1] - targetArrow.coords[1];
-                console.log(closestArrow)
-                this.getScore(closestArrow)
+                closestArrow.addMessage()
+                this.updateScore(closestArrow.getScore())
+                this.arrows = this.arrows.filter((arrow)=> !Object.is(arrow, closestArrow))
             };
         }
     };
 
-    getScore(arrow) {
-        const dist = arrow.attempt;
-        const message = document.querySelector("#message");
-        switch (Math.abs(Math.floor(dist/80))) {
-            case 0:
-                message.innerText = "Perfect!";
-                break;
-            case 1:
-                message.innerText = "Great!";
-                break;
-            case 2:
-                message.innerText = "Nice!"
-                break;
-            case 3:
-                message.innerText = "Close"
-            default:
-                message.innerText = "Keep trying"
-                break;
+    updateScore(scoreUpdate) {
+        this.score += scoreUpdate
+        const scoreText = document.querySelector("#score")
+        scoreText.innerText = "Score: "+this.score
+        if (scoreUpdate!==0) {
+            const positive = this.score>0 ? 'positive' : 'negative'
+            // code inspired from https://codepen.io/carlosriera/pen/WxMjgJ
+            const spanElement = document.createElement('h2');
+            spanElement.className = 'plus-one neonText';
+            spanElement.id = positive;
+            spanElement.innerHTML = scoreUpdate > 0 ? '+'+scoreUpdate : scoreUpdate;
+    
+            const scoreAnimate = document.querySelector("#animate-score")
+            scoreAnimate.appendChild(spanElement);
+    
+            spanElement.style.transition = 'opacity 1s';
+            spanElement.style.opacity = '1';
+    
+            // Schedule removal of the span element after 2 seconds
+            setTimeout(function() {
+            // Fade out the span element
+            spanElement.style.opacity = '0';
+            
+            // Remove the span element after the fade out animation
+            setTimeout(function() {
+                spanElement.remove();
+            }, 1000);
+            }, 2000);
         }
-        setTimeout(()=> {
-                message.innerText = ""
-            }, 500);
 
     }
 

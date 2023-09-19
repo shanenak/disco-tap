@@ -26,12 +26,20 @@
         <div id="FPS">
             <h3></h3>
         </div>
-        <div>
-            <h2 id="score"> Score: 0</h2>
+        <div id="animate-score">
+            <h2 id="score" class="flicker"> Score: 0</h2>
         </div>
     </div>
     <div class="container">
-        <img class='img' src="../images/dance-wide.png" alt="Dance Sign">
+        <div id="popup" class="popup">
+            <div class="popup-content neonText">
+                <span class="close" onclick="closePopup()">&times;</span>
+                <h1 class="neonText" id="logo">DISCO TAP</h1>
+                <p> Use the arrows on your keyboard to dance to the music. </p>
+                <p>This is the start of the game. Press the spacebar to continue.</p>
+            </div>
+        </div>
+        <img id='dance' src="../images/dance-wide.png" alt="Dance Sign">
         <canvas id="canvas"></canvas>
         <div class="overlay">
             <h2 class="neonText" id="message"></h2>

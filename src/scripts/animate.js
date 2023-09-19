@@ -1,10 +1,6 @@
-// import Arrow from "./arrow";
 import Canvas from "./canvas";
 import Music from "./music";
 import { ALL_DIRS, DIM_X, DIM_Y } from "./constants";
-
-// const fs = require("fs");
-// const { parse } = require("csv-parse");
 
 class Animate {
     constructor(ctx) {
