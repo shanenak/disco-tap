@@ -1,7 +1,7 @@
 // import Arrow from "./arrow";
 import Canvas from "./canvas";
 import Music from "./music";
-import { DIM_X, DIM_Y } from "./constants";
+import { ALL_DIRS, DIM_X, DIM_Y } from "./constants";
 
 // const fs = require("fs");
 // const { parse } = require("csv-parse");
@@ -11,7 +11,7 @@ class Animate {
         this.ctx = ctx;
         this.music = new Music();
         this.canvas = new Canvas(ctx);
-        this.getChoreography();
+        this.getChoreo = this.fetchData("../music/choreo_dance_the_night.json")
     }
     
 
@@ -23,24 +23,35 @@ class Animate {
     
     startGame() {
         this.canvas.addTargets();   
+        console.log(this.choreo[1])
         this.startAnimating(1000 / Animate.FPS);
     };
 
     startAnimating(fps) {
-        this.frameCount = 0;
+        this.frameCount = 1;
         this.interval = setInterval(this.animate.bind(this),fps)
     };
 
-    getChoreography() {
-        const filename = "../music/choreo_dance_the_night.json";
-        fetch(filename)
-        .then(Response => Response.json())
-        .then(data => console.log(data));
+    async fetchData(filename) {
+        let response = await fetch(filename);
+        let data = await response.json();
+        data = JSON.stringify(data);
+        data = JSON.parse(data);
+        return data;
     }
+                    
 
     animate() {
         this.ctx.clearRect(0,0,DIM_X, DIM_Y)
-        if (this.frameCount % Animate.FRAMES_PER_BEAT === 0) this.canvas.createArrow();
+        if (this.frameCount%13 === 0){
+            const beat = this.frameCount/13
+            for (let i = 0; i < ALL_DIRS.length; i++) {
+                // console.log(beat, ALL_DIRS[i])
+                if (this.choreo[beat][ALL_DIRS[i]]) {
+                    this.canvas.createArrow(ALL_DIRS[i]);
+                }
+            }
+        }
         this.canvas.draw();
         this.canvas.update();
         this.frameCount+=1;

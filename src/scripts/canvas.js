@@ -52,13 +52,13 @@ class Canvas {
         })
     };
 
-    createArrow() {
-        let randDir = ALL_DIRS[Math.floor(Math.random()*4)];
-        let startCoords = COORDS[randDir].slice();
+    createArrow(dir) {
+        // let randDir = ALL_DIRS[Math.floor(Math.random()*4)];
+        let startCoords = COORDS[dir].slice();
         startCoords[1] = DIM_Y-ARROW_HEIGHT;
-        let randArrow = new Arrow(this.ctx, randDir, startCoords);
-        randArrow.createImage();
-        this.arrows.push(randArrow); 
+        let newArrow = new Arrow(this.ctx, dir, startCoords);
+        newArrow.createImage();
+        this.arrows.push(newArrow); 
     };
 
     draw() {

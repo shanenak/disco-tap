@@ -11,7 +11,12 @@ class Game {
         this.ctx.clearRect(0,0,DIM_X, DIM_Y)
         // start music
         const animation = new Animate(this.ctx);
-        animation.startGame()
+
+        animation.getChoreo.then((res)=> {
+            animation.choreo = res;
+            animation.startGame()
+        })
+        // animation.startGame()
     }
     
 }
