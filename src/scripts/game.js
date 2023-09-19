@@ -5,25 +5,22 @@ class Game {
     constructor(ctx) {
         this.ctx = ctx
         this.showInstructions()
-        this.setupBoard()
     }
     showInstructions() {
+        let that = this;
         document.addEventListener('keydown', function(event) {
-        if (event.code === 'Space') {
-            closePopup();
-        }
+            if (event.code === 'Space') {
+                that.closePopup();
+            }
         });
-
-        function closePopup() {
-        const popup = document.getElementById('popup');
-        popup.style.display = 'none';
-        }
-
-        // Display the popup at the start of the game
-        window.onload = function() {
         const popup = document.getElementById('popup');
         popup.style.display = 'block';
-        };
+    }
+
+    closePopup() {
+        const popup = document.getElementById('popup');
+        popup.style.display = 'none';
+        this.setupBoard()
     }
 
     setupBoard() {
@@ -35,7 +32,6 @@ class Game {
             animation.choreo = res;
             animation.startGame()
         })
-        // animation.startGame()
     }
     
 }
