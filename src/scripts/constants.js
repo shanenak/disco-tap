@@ -10,7 +10,7 @@ export const HORIZ_Y = 100;
 export const VERT_Y = 80;
 
 export const GAP = 10;
-export const TAB_X =  window.innerWidth/2 - ARROW_HEIGHT - 12*GAP // 400;
+export const TAB_X =  DIM_X/2 - ARROW_HEIGHT - 6*GAP // 400;
 
 export const COORDS = {
     "l": [TAB_X, HORIZ_Y],

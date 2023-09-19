@@ -10,19 +10,23 @@ class Canvas {
 
         document.addEventListener("keydown", this.keyTap.bind(this))
     }  
+    static SPEED = 5;
+    static PRESSED_FRAMES = 10;
+    static DIST_THRESHOLD = 25;
+
 
     keyTap(event) {
         if (ALL_DIRS.includes(ARROW_KEYS[event.key])) {
             event.preventDefault()
             let dir = ARROW_KEYS[event.key];
             let targetArrow = this.targets[dir];
-            targetArrow.pressed = Animate.PRESSED_FRAMES;
+            targetArrow.pressed = Canvas.PRESSED_FRAMES;
             
             let possibleArrows = this.arrows.filter((arrow)=>(
-                arrow.dir === targetArrow.dir) && (Math.abs(arrow.coords[1] - targetArrow.coords[1]) < Animate.DIST_THRESHOLD));
+                arrow.dir === targetArrow.dir) && (Math.abs(arrow.coords[1] - targetArrow.coords[1]) < Canvas.DIST_THRESHOLD));
             
             if (possibleArrows.length) {
-                possibleArrows[0].pressed = Animate.PRESSED_FRAMES;
+                possibleArrows[0].pressed = Canvas.PRESSED_FRAMES;
                 this.score += 5
             } else this.score -= 1;
 
@@ -68,7 +72,7 @@ class Canvas {
     update() {
         this.arrows = this.arrows.filter((arrow)=> arrow.coords[1]> -ARROW_HEIGHT)
         this.arrows.forEach((arrow)=> {
-            arrow.coords[1] -= 1
+            arrow.coords[1] -= Canvas.SPEED;
         })
     };
 };
