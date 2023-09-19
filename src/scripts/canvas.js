@@ -10,10 +10,10 @@ class Canvas {
 
         document.addEventListener("keydown", this.keyTap.bind(this))
     }  
+
     static SPEED = 5;
     static PRESSED_FRAMES = 10;
     static DIST_THRESHOLD = 25;
-
 
     keyTap(event) {
         if (ALL_DIRS.includes(ARROW_KEYS[event.key])) {
@@ -22,18 +22,42 @@ class Canvas {
             let targetArrow = this.targets[dir];
             targetArrow.pressed = Canvas.PRESSED_FRAMES;
             
-            let possibleArrows = this.arrows.filter((arrow)=>(
-                arrow.dir === targetArrow.dir) && (Math.abs(arrow.coords[1] - targetArrow.coords[1]) < Canvas.DIST_THRESHOLD));
-            
-            if (possibleArrows.length) {
-                possibleArrows[0].pressed = Canvas.PRESSED_FRAMES;
-                this.score += 5
-            } else this.score -= 1;
-
-            const scoreText = document.querySelector("#score");
-            scoreText.innerText = 'Score: '+this.score;
+            let dirArrows = this.arrows.filter((arrow)=> arrow.dir === targetArrow.dir);
+            console.log(targetArrow)
+            const closestArrow = dirArrows.sort((arrow)=> Math.abs(arrow.coords[1] - targetArrow.coords[1]))[0];
+            if (closestArrow) {
+                closestArrow.pressed = Canvas.PRESSED_FRAMES;
+                closestArrow.attempt = closestArrow.coords[1] - targetArrow.coords[1];
+                console.log(closestArrow)
+                this.getScore(closestArrow)
+            };
         }
     };
+
+    getScore(arrow) {
+        const dist = arrow.attempt;
+        const message = document.querySelector("#message");
+        switch (Math.abs(Math.floor(dist/80))) {
+            case 0:
+                message.innerText = "Perfect!";
+                break;
+            case 1:
+                message.innerText = "Great!";
+                break;
+            case 2:
+                message.innerText = "Nice!"
+                break;
+            case 3:
+                message.innerText = "Close"
+            default:
+                message.innerText = "Keep trying"
+                break;
+        }
+        setTimeout(()=> {
+                message.innerText = ""
+            }, 500);
+
+    }
 
     createTargets() {
         const allTargets = {};
@@ -63,7 +87,7 @@ class Canvas {
     draw() {
         this.addTargets(this.ctx);
         this.arrows.forEach((arrow)=> {
-            arrow.pressedAttempt();
+            // arrow.pressedAttempt();
             arrow.draw();
         })
     };

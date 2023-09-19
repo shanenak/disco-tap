@@ -55,12 +55,12 @@ class Arrow {
     targetCircle() {
         const [radius, centerX, centerY] = this.getCenter()
 
-        if (this.pressed) {
-            this.pressedCircle(radius, centerX, centerY);
-            this.pressed -=1;
-        } else {
-            this.emptyCircle(radius, centerX, centerY);
-        }
+        // if (this.pressed) {
+        //     this.pressedCircle(radius, centerX, centerY);
+        //     this.pressed -=1;
+        // } else {
+        //     this.emptyCircle(radius, centerX, centerY);
+        // }
         this.outlineCircle(radius, centerX, centerY)
     }
 
