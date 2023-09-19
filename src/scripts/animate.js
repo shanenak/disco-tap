@@ -13,7 +13,6 @@ class Animate {
         this.canvas = new Canvas(ctx);
         this.getChoreo = this.fetchData("../music/choreo_dance_the_night.json")
     }
-    
 
     static BPM = 110;
     static FRAMES_PER_BEAT = 13;
@@ -25,7 +24,6 @@ class Animate {
     
     startGame() {
         this.canvas.addTargets();   
-        console.log(this.choreo[1])
         this.startAnimating(Animate.LENGTH_FRAME);
     };
 
@@ -48,7 +46,6 @@ class Animate {
         if (this.frameCount%13 === 0){
             const beat = this.frameCount/13
             for (let i = 0; i < ALL_DIRS.length; i++) {
-                // console.log(beat, ALL_DIRS[i])
                 if (this.choreo[beat][ALL_DIRS[i]]) {
                     this.canvas.createArrow(ALL_DIRS[i]);
                 }
@@ -57,9 +54,8 @@ class Animate {
         this.canvas.draw();
         this.canvas.update();
         this.frameCount+=1;
-        if (this.frameCount > 24*18) {
+        if (this.frameCount > 24*19) {
             clearInterval(this.interval);
-            console.log('interval cleared!');
         }
     }
 }

@@ -48,7 +48,6 @@ class Canvas {
         Object.values(this.targets).forEach((arrow)=> {
             arrow.targetCircle();
             arrow.draw();
-            console.log('added target')
         })
     };
 
