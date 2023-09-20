@@ -6,7 +6,8 @@ class Animate {
     constructor(ctx) {
         this.ctx = ctx;
         this.canvas = new Canvas(ctx);
-        this.music = new Music();
+        console.log('make music')
+        this.music = new Music(this);
         this.getChoreo = this.fetchData("../music/dance_the_night_choreo.json")
     }
 
@@ -18,14 +19,16 @@ class Animate {
     static LENGTH_FRAME = 1000/Animate.FRAMES_PER_SEC;
 
     startGame() {
+        console.log('startGame')
         this.canvas.addTargets();   
         setTimeout(this.music.audio.play.bind(this.music.audio), 1000)
-        this.startAnimating(Animate.LENGTH_FRAME);
+        this.startAnimating();
     };
 
-    startAnimating(fps) {
+    startAnimating() {
+        console.log('startAnimating')
         this.frameCount = 1;
-        this.interval = setInterval(this.animate.bind(this),fps)
+        this.interval = setInterval(this.animate.bind(this),Animate.LENGTH_FRAME) 
     };
 
     async fetchData(filename) {
@@ -34,6 +37,16 @@ class Animate {
         data = JSON.stringify(data);
         data = JSON.parse(data);
         return data;
+    }
+
+    pauseAnimation() {
+        console.log('pauseAnimation')
+        clearInterval(this.interval);
+    }
+
+    restartAnimation() {
+        console.log('restartAnimation')
+        this.interval = setInterval(this.animate.bind(this),Animate.LENGTH_FRAME)
     }
                     
 
