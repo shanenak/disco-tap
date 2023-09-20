@@ -7,6 +7,12 @@ class Music {
         this.audio.volume = 0.2;
         this.setMute();
         this.setPause();
+        this.setEnd();
+    }
+
+    setEnd() {
+        const that = this;
+        this.audio.addEventListener("ended", this.animation.endGame())
     }
 
     setMute() {
@@ -34,7 +40,6 @@ class Music {
         const pauseGame = document.querySelector(".fa-pause");
         pauseGame.addEventListener('click', function(e) {
             that.audio.pause();
-            console.log(that.animation)
             that.animation.pauseAnimation();
             pauseGame.className = "fa-solid fa-play fa-beat";
             that.setReplay();
