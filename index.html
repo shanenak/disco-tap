@@ -18,8 +18,15 @@
 
 <body>
     <div class="nav neonText">
-        <div>
-            <h1 id="logo">DISCO TAP</h1>
+        <div id="logo">
+            <h1>DISCO TAP</h1>
+            <div class="disco-animation">
+                <div class="hanger">
+                </div>
+                <div class="discoball">
+                    <img src="../images/color-disco-ball.png" alt="">
+                </div>
+            </div>
         </div>
         <div class="right-nav">
             <a href="https://www.linkedin.com/in/shannonnmillar/" class="fa-brands fa-linkedin fa-lg"></a>
@@ -28,13 +35,19 @@
         </div>
     </div>
     <div class="container">
-        <div id="popup" class="popup">
+        <div class="popup">
             <div class="popup-content neonText">
                 <span class="close" onclick="closePopup()">&times;</span>
-                <h1 class="neonText" id="logo">DISCO TAP</h1>
+                <div id="popup-logo">
+                    <h1>DISCO TAP</h1>
+                    <!-- <div class="disco-animation">
+                        <div class="discoball">
+                            <img src="https://drive.google.com/uc?id=0B7QrEBMF4GTGQ3lfRzV0cU5rNHM" alt="">
+                        </div>
+                    </div> -->
+                </div>
                 <p> Use the arrows on your keyboard to dance to the music. </p>
                 <p> Follow the choreography of the arrows on the screen and try to stay on beat. </p>
-                <canvas id="mini-canvas"></canvas>
                 <h2>Press the spacebar to start</h2>
             </div>
         </div>

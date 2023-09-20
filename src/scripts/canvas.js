@@ -11,13 +11,15 @@ class Canvas {
         document.addEventListener("keydown", this.keyTap.bind(this))
     }  
 
-    static SPEED = 5;
+    static SPEED = 8;
     static PRESSED_FRAMES = 5;
     static DIST_THRESHOLD = 25;
 
     keyTap(event) {
         if (ALL_DIRS.includes(ARROW_KEYS[event.key])) {
             event.preventDefault()
+            // console.log('first arrow');
+            // console.timeLog()
             let dir = ARROW_KEYS[event.key];
             let targetArrow = this.targets[dir];
             targetArrow.pressed = Canvas.PRESSED_FRAMES;
@@ -77,7 +79,6 @@ class Canvas {
         Object.values(this.targets).forEach((arrow)=> {
             arrow.targetCircle();
             arrow.draw();
-            console.log(arrow)
         })
     };
 

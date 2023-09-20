@@ -3,7 +3,7 @@ import { DIM_X, DIM_Y } from "./scripts/constants";
 
 const canvasEl = document.getElementById("canvas")
 canvasEl.width = DIM_X;
-canvasEl.height = DIM_Y - 300;
+canvasEl.height = DIM_Y;
 
 var parentStyle = canvasEl.parentElement.style;
 parentStyle.textAlign = "center";
