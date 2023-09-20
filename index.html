@@ -10,8 +10,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Neonderthaw&family=Tilt+Neon&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <script src="./dist/main.js" defer></script>
     <title>Disco Tap</title>
+    <link rel="icon" type="image/x-icon" href="../images/disco-ball.png">
 </head>
 
 <body>
@@ -19,15 +21,10 @@
         <div>
             <h1 id="logo">DISCO TAP</h1>
         </div>
-        <div>
-            <audio id="dance-the-night" controls controlslist="nodownload" src="../music/Dance the Night clip.mov">
-            </audio>
-        </div>
-        <div id="FPS">
-            <h3></h3>
-        </div>
-        <div id="animate-score">
-            <h2 id="score" class="flicker"> Score: 0</h2>
+        <div class="right-nav">
+            <a href="https://www.linkedin.com/in/shannonnmillar/" class="fa-brands fa-linkedin fa-lg"></a>
+            <a href="https://github.com/shanenak" class="fa-brands fa-github fa-lg"></a>
+            <i class="fa-solid fa-volume-high fa-beat"></i>
         </div>
     </div>
     <div class="container">
@@ -36,13 +33,18 @@
                 <span class="close" onclick="closePopup()">&times;</span>
                 <h1 class="neonText" id="logo">DISCO TAP</h1>
                 <p> Use the arrows on your keyboard to dance to the music. </p>
-                <p>This is the start of the game. Press the spacebar to continue.</p>
+                <p> Get a high score by following the choreography of the arrows on the screen. </p>
+                <p> Try to stay on beat! </p>
+                <h2>Press the spacebar to start</h2>
             </div>
         </div>
         <img id='dance' src="../images/dance-wide.png" alt="Dance Sign">
         <canvas id="canvas"></canvas>
         <div class="overlay">
-            <h2 class="neonText" id="message"></h2>
+            <h3 class="neonText" id="message"></h3>
+        </div> 
+        <div class='neonText' id="animate-score">
+            <h3 id="score" class="flicker"> Score: 0</h3>
         </div>
     </div>
     

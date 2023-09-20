@@ -5,15 +5,22 @@
 
 .nav {
     background-color: black;
+    font-weight: bold;
     color: white;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding-left: 40px;
-    padding-right: 20px;
-    padding-bottom: 10px;
-    overflow: visible;
+    padding-right: 40px;
 }
+
+.right-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100px;
+}
+
 .neonText {
     color: #fff;
     font-family: 'Tilt Neon', cursive;
@@ -69,11 +76,6 @@
 /* https: //codepen.io/silvia-odwyer/pen/RwKMOpb */
 .popup-content {
     background-color: black;
-    /* 
-    background-image: url("../images/lights.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    */ 
     margin: 20% auto;
     padding: 20px;
     width: 80%;
@@ -108,11 +110,6 @@
     height: auto;
 }
 
-#game-on {
-    width: 20%;
-    height: auto;
-}
-
 #canvas {
     position: absolute;
     top: 0;
@@ -130,14 +127,26 @@
 
 #animate-score {
     position: relative;
-    display: inline-block;
-    vertical-align: middle;
+    background: rgba(0, 0, 0, 0.75);
+    bottom: 400px;
+    margin: 20% auto;
+    padding: 20px;
+    width: 80%;
+    border: 0.2rem solid #fff;
+    border-radius: 2rem;
+    padding: 0.4em;
+    box-shadow: 0 0 .2rem #fff,
+        0 0 .2rem #fff,
+        0 0 2rem #5271ff,
+        0 0 0.8rem #5271ff,
+        0 0 2.8rem #5271ff,
+        inset 0 0 1.3rem #5271ff;
 }
 
 .plus-one {
+    bottom: 50%;
+    left: 50%;
     position: absolute;
-    left: 75%;
-    bottom: -20px;
     animation-name: fade-in-up;
     animation-duration: 3s;
     animation-iteration-count: 1;

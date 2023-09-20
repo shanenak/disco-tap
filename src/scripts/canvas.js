@@ -45,7 +45,7 @@ class Canvas {
             spanElement.id = positive;
             spanElement.innerHTML = scoreUpdate > 0 ? '+'+scoreUpdate : scoreUpdate;
     
-            const scoreAnimate = document.querySelector("#animate-score")
+            const scoreAnimate = document.querySelector(".overlay")
             scoreAnimate.appendChild(spanElement);
     
             spanElement.style.transition = 'opacity 1s';
