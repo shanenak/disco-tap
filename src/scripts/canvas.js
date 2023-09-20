@@ -29,8 +29,9 @@ class Canvas {
             if (closestArrow) {
                 closestArrow.attempt = closestArrow.coords[1] - targetArrow.coords[1];
                 closestArrow.addMessage()
-                this.updateScore(closestArrow.getScore())
-                this.arrows = this.arrows.filter((arrow)=> !Object.is(arrow, closestArrow))
+                const score = closestArrow.getScore()
+                this.updateScore(score)
+                if (score > 0) this.arrows = this.arrows.filter((arrow)=> !Object.is(arrow, closestArrow))
             };
         }
     };

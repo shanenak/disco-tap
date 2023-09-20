@@ -31,7 +31,7 @@ class Arrow {
     addMessage() {
         const dist = this.attempt;
         const message = document.querySelector("#message");
-        switch (Math.abs(Math.floor(dist/80))) {
+        switch (Math.abs(Math.floor(dist/40))) {
             case 0:
                 message.innerText = "PERFECT!";
                 break;
@@ -54,7 +54,7 @@ class Arrow {
 
     getScore() {
         const dist = this.attempt;
-        switch (Math.abs(Math.floor(dist/80))) {
+        switch (Math.abs(Math.floor(dist/40))) {
             case 0:
                 return 5;
             case 1:

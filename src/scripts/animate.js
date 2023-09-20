@@ -19,9 +19,6 @@ class Animate {
 
     startGame() {
         this.canvas.addTargets();   
-        // this.music.audio.play()
-        // console.log('start')
-        // console.time()
         setTimeout(this.music.audio.play.bind(this.music.audio), 1000)
         this.startAnimating(Animate.LENGTH_FRAME);
     };
