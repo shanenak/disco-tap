@@ -128,13 +128,17 @@
     text-align: center;
 }
 
+#new-score {
+    height: 20px;
+}
+
 #animate-score {
     position: relative;
     background: rgba(0, 0, 0, 0.75);
     bottom: 400px;
     margin: 20% auto;
     padding: 20px;
-    width: 80%;
+    width: 40%;
     border: 0.2rem solid #fff;
     border-radius: 2rem;
     padding: 0.4em;
@@ -151,7 +155,7 @@
     left: 50%;
     position: absolute;
     animation-name: fade-in-up;
-    animation-duration: 3s;
+    animation-duration: 1s;
     animation-iteration-count: 1;
     animation-timing-function: ease;
 }

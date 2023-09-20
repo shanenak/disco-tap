@@ -62,7 +62,6 @@ class Canvas {
             }, 1000);
             }, 2000);
         }
-
     }
 
     createTargets() {
@@ -78,11 +77,11 @@ class Canvas {
         Object.values(this.targets).forEach((arrow)=> {
             arrow.targetCircle();
             arrow.draw();
+            console.log(arrow)
         })
     };
 
     createArrow(dir) {
-        // let randDir = ALL_DIRS[Math.floor(Math.random()*4)];
         let startCoords = COORDS[dir].slice();
         startCoords[1] = DIM_Y-ARROW_HEIGHT;
         let newArrow = new Arrow(this.ctx, dir, startCoords);
@@ -93,7 +92,6 @@ class Canvas {
     draw() {
         this.addTargets(this.ctx);
         this.arrows.forEach((arrow)=> {
-            // arrow.pressedAttempt();
             arrow.draw();
         })
     };

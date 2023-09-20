@@ -33,8 +33,8 @@
                 <span class="close" onclick="closePopup()">&times;</span>
                 <h1 class="neonText" id="logo">DISCO TAP</h1>
                 <p> Use the arrows on your keyboard to dance to the music. </p>
-                <p> Get a high score by following the choreography of the arrows on the screen. </p>
-                <p> Try to stay on beat! </p>
+                <p> Follow the choreography of the arrows on the screen and try to stay on beat. </p>
+                <canvas id="mini-canvas"></canvas>
                 <h2>Press the spacebar to start</h2>
             </div>
         </div>
@@ -43,8 +43,10 @@
         <div class="overlay">
             <h3 class="neonText" id="message"></h3>
         </div> 
+        <div id="new-score">
+        </div>
         <div class='neonText' id="animate-score">
-            <h3 id="score" class="flicker"> Score: 0</h3>
+            <h2 id="score" class="flicker"> Score: 0</h2>
         </div>
     </div>
     

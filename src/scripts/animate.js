@@ -5,8 +5,8 @@ import { ALL_DIRS, DIM_X, DIM_Y } from "./constants";
 class Animate {
     constructor(ctx) {
         this.ctx = ctx;
-        this.music = new Music();
         this.canvas = new Canvas(ctx);
+        this.music = new Music();
         this.getChoreo = this.fetchData("../music/choreo_dance_the_night.json")
     }
 
@@ -17,13 +17,17 @@ class Animate {
     static FRAMES_PER_SEC = Animate.FRAMES_PER_MIN / Animate.SEC_PER_MIN;
     static LENGTH_FRAME = 1000/Animate.FRAMES_PER_SEC;
 
-    
     startGame() {
         this.canvas.addTargets();   
+        this.music.audio.play()
+        console.log('music')
+        console.timeLog()
         this.startAnimating(Animate.LENGTH_FRAME);
     };
 
     startAnimating(fps) {
+        console.log('animating');
+        console.timeLog()
         this.frameCount = 1;
         this.interval = setInterval(this.animate.bind(this),fps)
     };
