@@ -35,9 +35,7 @@ class Game {
         this.demoArrow.targetCircle();
         const imageObject = this.demoArrow.getImage()
         let that = this;
-        imageObject.onload = function () {
-            that.demoCtx.drawImage(imageObject, ...that.demoArrow.coords, imageObject.width, imageObject.height)
-        };
+        that.demoCtx.drawImage(imageObject, ...that.demoArrow.coords, imageObject.width, imageObject.height)
     }
 
     closeInstructions() {
