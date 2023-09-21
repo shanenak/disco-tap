@@ -99,13 +99,14 @@
     height: 100%;
     background: rgba(0, 0, 0, 0.75);
     z-index: 9999;
+    display: block;
 }
 
 /* https: //codepen.io/silvia-odwyer/pen/RwKMOpb */
 .instructions-content, .results-section {
     background-color: black;
     margin: 5% auto;
-    padding: 20px;
+    padding: 10px;
     width: 80%;
     border: 0.2rem solid #fff;
     border-radius: 2rem;
@@ -264,7 +265,7 @@
 
 .results-section {
     display: grid;
-    grid-template-rows: 1fr 2fr 2fr;
+    grid-template-rows: 0.5fr 2fr 2fr;
     border-radius: 1em;
 }
 
@@ -275,22 +276,25 @@
 }
 
 .results-section>h2 {
-    padding-top: 1em;
+    padding-top: 0.5em;
 }
 /* https: //codepen.io/DScpio/pen/LYXopaV */
 .affirmation {
-    padding-bottom: 1em;
+    padding-bottom: 0.5em;
     align-self: end;
 }
 
 .affirmation-summary {
-    margin-block: 1em;
+    margin-block: 0.5em;
     font-size: 1.5rem;
     font-weight: bold;
 }
 
-.affirmation-sentence {
-    padding-bottom: 1.5em;
+
+
+.select-next-song {
+    display: inline-block;
+    margin-block: 1em;
 }
 
 .final-score-wrapper {

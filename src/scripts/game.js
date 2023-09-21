@@ -117,6 +117,8 @@ class Game {
     }
 
     closeResults() {
+        this.songSelect = document.querySelector('input[name="next-song"]:checked').value;
+
         this.setupBoard()
         const results = document.querySelector('.results');
         results.style.display = 'none';
