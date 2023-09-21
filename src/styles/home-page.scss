@@ -154,19 +154,22 @@
 }
 
 #new-score {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     height: 20px;
 }
 
 #animate-score {
-    position: relative;
+    position: absolute;
     background: var(--gradient-2);
-    bottom: 400px;
-    margin: 20% auto;
-    padding: 20px;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 40%;
     border: 0.2rem solid #fff;
     border-radius: 2rem;
-    padding: 0.4em;
     box-shadow: 0 0 .2rem #fff,
         0 0 .2rem #fff,
         0 0 2rem #5271ff,

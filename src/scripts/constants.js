@@ -1,7 +1,7 @@
 export const ALL_DIRS = ['l', 'd', 'u', 'r'];
 
 export const DIM_X = window.innerWidth;  
-export const DIM_Y = 600; 
+export const DIM_Y = window.innerHeight-200; 
 
 export const ARROW_WIDTH = 40;
 export const ARROW_HEIGHT = 80;
@@ -10,7 +10,7 @@ export const HORIZ_Y = 100;
 export const VERT_Y = 80;
 
 export const GAP = 10;
-export const TAB_X =  DIM_X/2 - ARROW_HEIGHT - 16*GAP // 400;
+export const TAB_X =  DIM_X/2 - ARROW_HEIGHT - 16*GAP;
 
 export const COORDS = {
     "l": [TAB_X, HORIZ_Y],
