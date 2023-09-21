@@ -1,5 +1,6 @@
-import { DIM_X, DIM_Y } from "./constants";
+import { DIM_X, DIM_Y, ARROW_WIDTH, ARROW_HEIGHT } from "./constants";
 import Animate from "./animate";
+import Arrow from "./arrow";
 
 class Game {
     constructor(ctx) {
@@ -14,11 +15,40 @@ class Game {
                 that.closeInstructions();
             }
         }, {once: true});
+
+        const startButton = document.querySelector('#start-game')
+        startButton.addEventListener('click', that.closeInstructions.bind(that))
+
         const instructions = document.querySelector('.instructions');
         instructions.style.display = 'block';
+
+        const demoCanvas = document.querySelector('#demo-canvas')
+        this.demoCtx = demoCanvas.getContext("2d");
+        this.demoArrow = new Arrow(this.demoCtx, 'r', [10, 50]);
+        
+        document.addEventListener("keydown", this.rightKeyTap.bind(this))
+        this.interval = setInterval(this.drawDemoArrow.bind(this),20) 
+        
+    }
+
+    drawDemoArrow() {
+        this.demoCtx.clearRect(0,0,DIM_X, DIM_Y)
+        this.demoArrow.targetCircle();
+        const imageObject = this.demoArrow.getImage()
+        let that = this;
+        imageObject.onload = function () {
+            that.demoCtx.drawImage(imageObject, ...that.demoArrow.coords, imageObject.width, imageObject.height)
+        };
+    }
+    rightKeyTap(event) {
+        if (event.key==="ArrowRight") {
+            event.preventDefault()
+            this.demoArrow.pressed = 5;
+        }
     }
 
     closeInstructions() {
+        clearInterval(this.interval)
         this.setupBoard()
         const instructions = document.querySelector('.instructions');
         instructions.style.display = 'none';
@@ -38,10 +68,10 @@ class Game {
         if (typeof this.animation.interval !== 'undefined') clearInterval(this.animation.interval);
 
         this.showResults()
-        this.updateText()
+        this.updateResults()
     }
 
-    updateText() {
+    updateResults() {
         const score =  this.animation.canvas.score;
         const possPoints = this.animation.possPoints;
 

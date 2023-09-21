@@ -18,8 +18,6 @@ class Canvas {
     keyTap(event) {
         if (ALL_DIRS.includes(ARROW_KEYS[event.key])) {
             event.preventDefault()
-            // console.log('first arrow');
-            // console.timeLog()
             let dir = ARROW_KEYS[event.key];
             let targetArrow = this.targets[dir];
             targetArrow.pressed = Canvas.PRESSED_FRAMES;

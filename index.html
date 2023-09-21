@@ -29,23 +29,27 @@
             </div>
         </div>
         <div class="right-nav">
-            <a href="https://www.linkedin.com/in/shannonnmillar/" class="fa-brands fa-linkedin fa-lg"></a>
-            <a href="https://github.com/shanenak" class="fa-brands fa-github fa-lg"></a>
+            <a href="https://www.linkedin.com/in/shannonnmillar/" target="_blank" class="fa-brands fa-linkedin fa-lg"></a>
+            <a href="https://github.com/shanenak" target="_blank" class="fa-brands fa-github fa-lg"></a>
             <i class="fa-solid fa-volume-high fa-beat"></i>
             <i class="fa-solid fa-pause fa-beat"></i>
         </div>
     </div>
     <div class="container">
         <div class="instructions">
-            <div class="instructions-content neonText">
-                <span class="close" onclick="closeInstructions()">&times;</span>
+            <div class="instructions-content lightNeonText">
                 <div id="instructions-logo">
                     <h1>DISCO TAP</h1>
                 </div>
                 <p> Use the arrows on your keyboard to dance to the music. </p>
                 <p> Follow the choreography of the arrows on the screen. </p>
                 <p> Earn more points by staying on the beat. </p>
-                <h2>Press the spacebar to start</h2>
+                <div id="demo">
+                    <canvas id="demo-canvas" width="120px" height="120px"></canvas>
+                </div>
+                <button class="btn btn-gradient-border lightNeonText" id="start-game">
+                    Start dancing
+                </button>
             </div>
         </div>
         <img id='dance' src="../images/dance-wide.png" alt="Dance Sign">
@@ -76,16 +80,6 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="end-content neonText">
-                <span class="close" onclick="closeEnd()">&times;</span>
-                <div id="end-logo">
-                    <h1>DISCO TAP</h1>
-                </div>
-                <p> Use the arrows on your keyboard to dance to the music. </p>
-                <p> Follow the choreography of the arrows on the screen. </p>
-                <p> Earn more points by staying on the beat. </p>
-                <h2>Press the spacebar to start</h2>
-            </div> -->
         </div>
     </div>
     

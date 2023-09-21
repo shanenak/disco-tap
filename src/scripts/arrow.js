@@ -24,6 +24,11 @@ class Arrow {
 
     draw() {
         let imageObject = this.newImage;
+        console.log(this)
+        this.ctx.beginPath();
+        this.ctx.arc(...this.coords, 1, 0, 2 * Math.PI, true);
+        this.ctx.stroke()
+        this.ctx.fill();
         this.ctx.drawImage(imageObject, ...this.coords, imageObject.width, imageObject.height)
     }
 
