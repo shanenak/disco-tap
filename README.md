@@ -1,4 +1,6 @@
-# disco-tap
+# Disco Tap
+
+Play Disco Tap [here](https://shanenak.github.io/disco-tap/)!
 
 ### Background
 
@@ -28,3 +30,6 @@ This project was completed in 5 days on the timeline listed below.
 - Monday: Logic of identifying how and when arrows hit targets.
 - Tuesday: Music features (start, stop) and UI
 - Wednesday: Finalize scoring metrics and refine UI.
+
+The interface was first envisioned with the image below.
+![wireframe](./images/wireframe.png)
