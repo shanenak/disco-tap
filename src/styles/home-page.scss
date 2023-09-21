@@ -1,3 +1,9 @@
+:root {
+    --gradient-1: linear-gradient(#7c44ff, #332be5);
+    --gradient-2: linear-gradient(#4824ce, #4733eb);
+    font-family: "Trebuchet MS", sans-serif;
+}
+
 .body {
     margin: 0;
     padding: 0;
@@ -20,7 +26,7 @@
     align-items: center;
 }
 
-#popup-logo {
+#instructions-logo {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -31,6 +37,7 @@
     justify-content: space-between;
     align-items: center;
     width: 150px;
+    cursor: pointer;
 }
 
 .neonText {
@@ -45,6 +52,15 @@
             0 0 82px #5271ff,
             0 0 92px #5271ff,
             0 0 102px #5271ff;
+}
+
+.lightNeonText {
+    color: #fff;
+    font-family: 'Tilt Neon', cursive;
+    /* Neon and flicker effect from https: //css-tricks.com/how-to-create-neon-text-with-css/ */
+    text-shadow:
+        0 0 4px #fff,
+        0 0 7px #fff;
 }
 
 .flicker {
@@ -75,7 +91,7 @@
         text-shadow: none;
     }
 }
-.popup {
+.instructions, .results {
     position: fixed;
     top: 0;
     left: 0;
@@ -86,14 +102,13 @@
 }
 
 /* https: //codepen.io/silvia-odwyer/pen/RwKMOpb */
-.popup-content {
+.instructions-content, .results-section {
     background-color: black;
-    margin: 20% auto;
+    margin: 5% auto;
     padding: 20px;
     width: 80%;
     border: 0.2rem solid #fff;
     border-radius: 2rem;
-    padding: 0.4em;
     box-shadow: 0 0 .2rem #fff,
         0 0 .2rem #fff,
         0 0 2rem #5271ff,
@@ -232,4 +247,67 @@
     100% {
         opacity: 0.7;
     }
+}
+
+.gradient-1 {
+    background: var(--gradient-1);
+}
+
+.gradient-2 {
+    background: var(--gradient-2);
+}
+
+.final-score {
+    font-size: 3em;
+    font-weight: bold;
+}
+
+.results-section {
+    display: grid;
+    grid-template-rows: 1fr 2fr 2fr;
+    border-radius: 1em;
+}
+
+.results-section>h2 {
+    padding-top: 1em;
+}
+
+.affirmation {
+    padding-bottom: 1em;
+    align-self: end;
+}
+
+.affirmation-summary {
+    margin-block: 1em;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.affirmation-sentence {
+    padding-bottom: 1.5em;
+}
+
+.final-score-wrapper {
+    align-self: center;
+    clip-path: circle(6rem);
+}
+
+.btn {
+    font-size: 18px;
+    padding: 12px 32px;
+    margin: 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.btn-gradient-border {
+    color: var(--gradient-2);
+    border: 2px double transparent;
+        
+    background-image: linear-gradient(#4824ce, #4733eb), radial-gradient(circle at left top, rgb(1, 110, 218), #5271ff);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
 }

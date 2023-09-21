@@ -8,6 +8,7 @@ class Animate {
         this.canvas = new Canvas(ctx);
         this.music = new Music(this);
         this.getChoreo = this.fetchData("../music/dance_the_night_choreo.json")
+        this.possPoints = 0;
     }
 
     static BPM = 110;
@@ -22,11 +23,6 @@ class Animate {
         setTimeout(this.music.audio.play.bind(this.music.audio), 1000)
         this.startAnimating();
     };
-
-    endGame() {
-        if (this.interval) clearInterval(this.interval);
-        
-    }
 
     startAnimating() {
         this.frameCount = 1;
@@ -58,6 +54,7 @@ class Animate {
             for (let i = 0; i < ALL_DIRS.length; i++) {
                 if (this.choreo[beat][ALL_DIRS[i]]) {
                     this.canvas.createArrow(ALL_DIRS[i]);
+                    this.possPoints += 5
                 }
             }
         }

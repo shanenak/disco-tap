@@ -18,7 +18,7 @@
 
 <body>
     <div class="nav neonText">
-        <div class="logo">
+        <div class="logo flicker">
             <h1>DISCO TAP</h1>
             <div class="disco-animation">
                 <div class="hanger">
@@ -36,19 +36,15 @@
         </div>
     </div>
     <div class="container">
-        <div class="popup">
-            <div class="popup-content neonText">
-                <span class="close" onclick="closePopup()">&times;</span>
-                <div id="popup-logo">
+        <div class="instructions">
+            <div class="instructions-content neonText">
+                <span class="close" onclick="closeInstructions()">&times;</span>
+                <div id="instructions-logo">
                     <h1>DISCO TAP</h1>
-                    <!-- <div class="disco-animation">
-                        <div class="discoball">
-                            <img src="https://drive.google.com/uc?id=0B7QrEBMF4GTGQ3lfRzV0cU5rNHM" alt="">
-                        </div>
-                    </div> -->
                 </div>
                 <p> Use the arrows on your keyboard to dance to the music. </p>
-                <p> Follow the choreography of the arrows on the screen and try to stay on beat. </p>
+                <p> Follow the choreography of the arrows on the screen. </p>
+                <p> Earn more points by staying on the beat. </p>
                 <h2>Press the spacebar to start</h2>
             </div>
         </div>
@@ -61,6 +57,35 @@
         </div>
         <div class='neonText' id="animate-score">
             <h2 id="score" class="flicker"> Score: 0</h2>
+        </div>
+        <div class="results" style="display:none">
+            <div class="results-wrapper">
+                <div class="results-section gradient-1 lightNeonText">
+                    <h1>DISCO TAP FINAL SCORE</h1>
+                    <div class="final-score-wrapper gradient-2">
+                        <p class="final-score lightNeonText">76</p>
+                        <p class="poss-points white-text">of 100</p>
+                    </div>
+                    <div class="affirmation">
+                        <p class="affirmation-summary">Great!</p>
+                        <p class="affirmation-sentence">You scored higher than 65% of those who have taken this test
+                        </p>
+                        <button class="btn btn-gradient-border lightNeonText" id="play-again">
+                            Play again
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="end-content neonText">
+                <span class="close" onclick="closeEnd()">&times;</span>
+                <div id="end-logo">
+                    <h1>DISCO TAP</h1>
+                </div>
+                <p> Use the arrows on your keyboard to dance to the music. </p>
+                <p> Follow the choreography of the arrows on the screen. </p>
+                <p> Earn more points by staying on the beat. </p>
+                <h2>Press the spacebar to start</h2>
+            </div> -->
         </div>
     </div>
     

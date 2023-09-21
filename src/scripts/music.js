@@ -7,12 +7,6 @@ class Music {
         this.audio.volume = 0.2;
         this.setMute();
         this.setPause();
-        this.setEnd();
-    }
-
-    setEnd() {
-        const that = this;
-        this.audio.addEventListener("ended", this.animation.endGame())
     }
 
     setMute() {

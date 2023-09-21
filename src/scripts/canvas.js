@@ -11,7 +11,7 @@ class Canvas {
         document.addEventListener("keydown", this.keyTap.bind(this))
     }  
 
-    static SPEED = 8;
+    static SPEED = 10;
     static PRESSED_FRAMES = 5;
     static DIST_THRESHOLD = 25;
 
