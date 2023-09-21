@@ -4,12 +4,6 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const config = {
-  resolve: {
-      modules: [
-          path.resolve(__dirname, 'node_modules'),
-          path.resolve(__dirname, './'),
-      ]
-  },
   entry: [
     path.resolve(__dirname, 'src', 'index.js'),
     path.resolve(__dirname, 'src', 'index.scss')
