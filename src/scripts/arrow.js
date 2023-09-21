@@ -135,7 +135,6 @@ class Arrow {
 
     demoTap(event) {
         if (event.key==="ArrowRight") {
-            console.log('tapped')
             event.preventDefault()
             this.pressed = 5;
         }

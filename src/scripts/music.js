@@ -3,7 +3,7 @@ import { async } from "regenerator-runtime";
 class Music {
     constructor(animation) {
         this.animation = animation;
-        this.audio = new Audio("../music/Dance the Night clip.mov");
+        this.audio = new Audio("/music/Dance the Night clip.mov");
         this.audio.volume = 0.2;
         this.setMute();
         this.setPause();
