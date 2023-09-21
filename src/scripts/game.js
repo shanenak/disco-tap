@@ -39,6 +39,8 @@ class Game {
     }
 
     closeInstructions() {
+        this.songSelect = document.querySelector('input[name="song"]:checked').value;
+        
         document.removeEventListener("keydown", this.demoArrow.demoTap);
         clearInterval(this.interval);
 
@@ -49,7 +51,7 @@ class Game {
 
     setupBoard() {
         this.ctx.clearRect(0,0,DIM_X, DIM_Y)
-        this.animation = new Animate(this.ctx);
+        this.animation = new Animate(this.ctx, this.songSelect);
         this.animation.getChoreo.then((res)=> {
             this.animation.choreo = res;
             this.animation.startGame()
@@ -115,6 +117,8 @@ class Game {
     }
 
     closeResults() {
+        this.songSelect = document.querySelector('input[name="next-song"]:checked').value;
+
         this.setupBoard()
         const results = document.querySelector('.results');
         results.style.display = 'none';

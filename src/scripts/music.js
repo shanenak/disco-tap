@@ -3,10 +3,16 @@ import { async } from "regenerator-runtime";
 class Music {
     constructor(animation) {
         this.animation = animation;
-        this.audio = new Audio("./music/Dance the Night clip.mov");
+        this.song = animation.song;
+        this.audio = this.getAudio()
         this.audio.volume = 0.2;
         this.setMute();
         this.setPause();
+    }
+
+    getAudio() {
+        if (this.song === 'eye-of-the-tiger') return new Audio("./music/eye_of_the_tiger.mov");
+        else return new Audio("./music/dance_the_night.mov");
     }
 
     setMute() {
