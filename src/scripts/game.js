@@ -79,7 +79,7 @@ class Game {
         const affirmationSummary = document.querySelector('.affirmation-summary')
         const affirmationSentence= document.querySelector('.affirmation-sentence')
 
-        switch (Math.floor((score/possPoints)/10)) {
+        switch (Math.floor((score/possPoints)*10)) {
             case 10:
                 affirmationSummary.innerText = 'Superstar!'
                 affirmationSentence.innerText = 'Congratulations, you beat the game!'
