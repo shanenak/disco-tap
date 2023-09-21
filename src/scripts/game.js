@@ -17,7 +17,7 @@ class Game {
         }, {once: true});
 
         const startButton = document.querySelector('#start-game')
-        startButton.addEventListener('click', that.closeInstructions.bind(that))
+        startButton.addEventListener('click', that.closeInstructions.bind(that),{ once: true })
 
         const instructions = document.querySelector('.instructions');
         instructions.style.display = 'block';
@@ -56,7 +56,7 @@ class Game {
             this.animation.choreo = res;
             this.animation.startGame()
         })
-        this.animation.music.audio.addEventListener("ended", this.endGame.bind(this))
+        this.animation.music.audio.addEventListener("ended", this.endGame.bind(this),{ once: true })
     }
 
     endGame() {
@@ -110,7 +110,7 @@ class Game {
     showResults() {
         let that = this;
         const playAgain = document.querySelector('#play-again')
-        playAgain.addEventListener('click', that.closeResults.bind(that))
+        playAgain.addEventListener('click', that.closeResults.bind(that),{ once: true })
 
         const results = document.querySelector('.results');
         results.style.display = 'block';
