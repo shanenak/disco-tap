@@ -3,11 +3,12 @@ import Music from "./music";
 import { ALL_DIRS, DIM_X, DIM_Y } from "./constants";
 
 class Animate {
-    constructor(ctx) {
+    constructor(ctx, song) {
         this.ctx = ctx;
+        this.song = song;
         this.canvas = new Canvas(ctx);
         this.music = new Music(this);
-        this.getChoreo = this.fetchData("./music/eye_of_the_tiger_choreo.json")
+        this.getChoreo = this.fetchChoreo()
         this.possPoints = 0;
     }
 
@@ -29,7 +30,8 @@ class Animate {
         this.interval = setInterval(this.animate.bind(this),Animate.LENGTH_FRAME) 
     };
 
-    async fetchData(filename) {
+    async fetchChoreo() {
+        const filename = this.song === 'eye-of-the-tiger' ? "./music/eye_of_the_tiger_choreo.json" : "./music/dance_the_night_choreo.json"
         let response = await fetch(filename);
         let data = await response.json();
         data = JSON.stringify(data);

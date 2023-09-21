@@ -273,7 +273,7 @@
 
 .instructions-content {
     display: grid;
-    grid-template-rows: 1fr 2fr 0.5fr;
+    grid-template-rows: 1fr 4fr;
     border-radius: 1em;
 }
 
@@ -305,6 +305,10 @@
     margin: 2%;
 }
 
+#instructions-description> button {
+    margin: 1em;
+}
+
 #instructions-text {
     padding-left: 10%;
     padding-right: 10%;
@@ -316,7 +320,7 @@
     border-radius: 1em;
     margin:5%;
     padding: 2%;
-    height: 75%;
+    height: 60%;
 }
 
 .btn {
