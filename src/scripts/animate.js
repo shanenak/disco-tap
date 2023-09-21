@@ -7,7 +7,7 @@ class Animate {
         this.ctx = ctx;
         this.canvas = new Canvas(ctx);
         this.music = new Music(this);
-        this.getChoreo = this.fetchData("./music/dance_the_night_choreo.json")
+        this.getChoreo = this.fetchData("./music/eye_of_the_tiger_choreo.json")
         this.possPoints = 0;
     }
 
