@@ -34,8 +34,8 @@ export const COLORS = {
 }
 
 export const IMAGE_SRC = { 
-    "l": "/disco-tap/images/left-arrow.png",
-    "d": "/disco-tap/images/down-arrow.png",
-    "u": "/disco-tap/images/up-arrow.png",
-    "r": "/disco-tap/images/right-arrow.png"
+    "l": "./images/left-arrow.png",
+    "d": "./images/down-arrow.png",
+    "u": "./images/up-arrow.png",
+    "r": "./images/right-arrow.png"
 }
