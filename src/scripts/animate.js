@@ -31,6 +31,7 @@ class Animate {
 
     async fetchData(filename) {
         let response = await fetch(filename);
+        console.log(response)
         let data = await response.json();
         data = JSON.stringify(data);
         data = JSON.parse(data);
