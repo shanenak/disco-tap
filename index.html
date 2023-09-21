@@ -41,15 +41,21 @@
                 <div id="instructions-logo">
                     <h1>DISCO TAP</h1>
                 </div>
-                <p> Use the arrows on your keyboard to dance to the music. </p>
-                <p> Follow the choreography of the arrows on the screen. </p>
-                <p> Earn more points by staying on the beat. </p>
-                <div id="demo">
-                    <canvas id="demo-canvas" width="120px" height="120px"></canvas>
+                <div id="instructions-text">
+                    <div class="gradient-2" id="demo">
+                        <p >Try tapping the right arrow on your keyboard</p>
+                        <canvas id="demo-canvas" width="150px" height="150px"></canvas>
+                    </div>
+                    <div id="instructions-description">
+                        <h2>Instructions</h2>
+                        <p> Use the arrows on your keyboard to dance to the music. </p>
+                        <p>Follow the choreography of the arrows on the screen. Earn more points by staying on the beat.</p>
+                        <button class="btn btn-gradient-border lightNeonText" id="start-game">
+                            Start dancing
+                        </button>
+                    </div>
                 </div>
-                <button class="btn btn-gradient-border lightNeonText" id="start-game">
-                    Start dancing
-                </button>
+                
             </div>
         </div>
         <img id='dance' src="../images/dance-wide.png" alt="Dance Sign">
@@ -59,7 +65,7 @@
         </div> 
         <div id="new-score">
         </div>
-        <div class='neonText' id="animate-score">
+        <div class='lightNeonText' id="animate-score">
             <h2 id="score" class="flicker"> Score: 0</h2>
         </div>
         <div class="results" style="display:none">

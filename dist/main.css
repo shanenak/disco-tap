@@ -161,7 +161,7 @@
 
 #animate-score {
     position: relative;
-    background: rgba(0, 0, 0, 0.75);
+    background: var(--gradient-2);
     bottom: 400px;
     margin: 20% auto;
     padding: 20px;
@@ -271,6 +271,12 @@
     border-radius: 1em;
 }
 
+.instructions-content {
+    display: grid;
+    grid-template-rows: 1fr 2fr 0.5fr;
+    border-radius: 1em;
+}
+
 .results-section>h2 {
     padding-top: 1em;
 }
@@ -295,10 +301,27 @@
     clip-path: circle(6rem);
 }
 
+#instructions-description {
+    margin: 2%;
+}
+
+#instructions-text {
+    padding-left: 10%;
+    padding-right: 10%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+#demo {
+    border-radius: 1em;
+    margin:5%;
+    padding: 2%;
+    height: 75%;
+}
+
 .btn {
     font-size: 18px;
     padding: 12px 32px;
-    margin: 1rem;
     cursor: pointer;
     border-radius: 4px;
     transition: all 0.3s ease;

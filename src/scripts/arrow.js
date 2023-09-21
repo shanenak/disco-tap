@@ -24,11 +24,6 @@ class Arrow {
 
     draw() {
         let imageObject = this.newImage;
-        console.log(this)
-        this.ctx.beginPath();
-        this.ctx.arc(...this.coords, 1, 0, 2 * Math.PI, true);
-        this.ctx.stroke()
-        this.ctx.fill();
         this.ctx.drawImage(imageObject, ...this.coords, imageObject.width, imageObject.height)
     }
 
@@ -132,6 +127,18 @@ class Arrow {
         this.ctx.fill();
         this.ctx.strokeStyle = "#000000";
         this.ctx.stroke();
+    }
+
+    setDemoListener() {
+        document.addEventListener("keydown", this.demoTap.bind(this))
+    }
+
+    demoTap(event) {
+        if (event.key==="ArrowRight") {
+            console.log('tapped')
+            event.preventDefault()
+            this.pressed = 5;
+        }
     }
 }
 export default Arrow;

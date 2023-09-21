@@ -8,21 +8,23 @@ Inspired by the classic arcade game Dance Dance Revolution, Disco Tap brings the
 
 In Disco Tap, users will be able to:
 
-- Listen to music that starts with the game
-- Follow choreography dictated by arrows floating across the screen
-- Type arrows on the keyboard to tap along to the music
-- Receive a score and corresponding category based on accuracy and precision
+- Listen to groovy tunes
+- Follow choreography dictated by arrows floating up the screen
+- Use arrows on the keyboard to tap along to the music
+- Receive a score and corresponding category based on accuracy and precision of taps
 
 ### Technologies, Libraries, and APIs
 
-- Canvas API
+This site primarily relied on Canvas for graphics. Many thanks to the brilliant artists that provided additional graphics for the interface.
+
+- Luigi Estuye, LUCREATIVE® (@lucreative) for the Dance neon photo
+- landondorrier.com for the spinning disco ball
 
 ### Implementation Timeline
 
-- Friday afternoon & weekend: Floating arrows up the screen at timed intervals
-- Monday: Check for collisions
-- Tuesday: Additional start and demo pages
-- Wednesday: Clean up aesthetics, scoring, etc.
-- Thursday Morning: Finalize text, positions, etc.
+This project was completed in 5 days on the timeline listed below.
 
-<!-- ![Wireframe](Screenshot 2023-09-14 at 10.53.43 PM.png "Title") -->
+- Friday afternoon & weekend: Floating arrows up the screen at timed intervals
+- Monday: Logic of identifying how and when arrows hit targets.
+- Tuesday: Music features (start, stop) and UI
+- Wednesday: Finalize scoring metrics and refine UI.

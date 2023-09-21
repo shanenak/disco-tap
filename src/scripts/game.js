@@ -24,10 +24,9 @@ class Game {
 
         const demoCanvas = document.querySelector('#demo-canvas')
         this.demoCtx = demoCanvas.getContext("2d");
-        this.demoArrow = new Arrow(this.demoCtx, 'r', [10, 50]);
-        
-        document.addEventListener("keydown", this.rightKeyTap.bind(this))
-        this.interval = setInterval(this.drawDemoArrow.bind(this),20) 
+        this.demoArrow = new Arrow(this.demoCtx, 'r', [30, 50]);
+        this.demoArrow.setDemoListener();
+        this.interval = setInterval(this.drawDemoArrow.bind(this),20) ;
         
     }
 
@@ -40,15 +39,11 @@ class Game {
             that.demoCtx.drawImage(imageObject, ...that.demoArrow.coords, imageObject.width, imageObject.height)
         };
     }
-    rightKeyTap(event) {
-        if (event.key==="ArrowRight") {
-            event.preventDefault()
-            this.demoArrow.pressed = 5;
-        }
-    }
 
     closeInstructions() {
-        clearInterval(this.interval)
+        document.removeEventListener("keydown", this.demoArrow.demoTap);
+        clearInterval(this.interval);
+
         this.setupBoard()
         const instructions = document.querySelector('.instructions');
         instructions.style.display = 'none';
@@ -91,11 +86,11 @@ class Game {
                 break;
             case 9:
                 affirmationSummary.innerText = 'Superb!'
-                affirmationSentence.innerText = 'Are you a professional dancer??'
+                affirmationSentence.innerText = 'Whoa, are you a professional dancer??'
                 break;
             case 8:
                 affirmationSummary.innerText = 'Fantastic!'
-                affirmationSentence.innerText = 'Killer dance moves!'
+                affirmationSentence.innerText = 'Killer dance moves out there!'
                 break;
             case 7:
                 affirmationSummary.innerText = 'Amazing!'
@@ -107,20 +102,13 @@ class Game {
                 break;
             default:
                 affirmationSummary.innerText = 'Great job!'
-                affirmationSentence.innerText = "Keep dancing!"
+                affirmationSentence.innerText = "Keep on dancing!"
                 break;
         }
     }
 
     showResults() {
         let that = this;
-        // document.addEventListener('keydown', function(e) {
-        //     if (e.code === 'Space') {
-        //         console.log('space event')
-        //         e.preventDefault()
-        //         that.closeResults();
-        //     }
-        // }, {once: true});
         const playAgain = document.querySelector('#play-again')
         playAgain.addEventListener('click', that.closeResults.bind(that))
 
