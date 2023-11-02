@@ -6,6 +6,7 @@ Play Disco Tap [here](https://shanenak.github.io/disco-tap/)!
 
 Inspired by the classic arcade game Dance Dance Revolution, Disco Tap brings the dance floor to your keyboard. Use the arrow keys to tap along to the music.
 
+![demo](https://portfolio-shannon-millar.s3.us-west-1.amazonaws.com/disco-tap-demo.mov)
 ### Functionality & MVPs
 
 In Disco Tap, users will be able to:
@@ -31,5 +32,5 @@ This project was completed in 5 days on the timeline listed below.
 - Tuesday: Music features (start, stop) and UI
 - Wednesday: Finalize scoring metrics and refine UI.
 
-The interface was first envisioned with the image below.
+The interface was first envisioned with the sketch below and other wireframes.
 ![wireframe](./images/wireframe.png)
